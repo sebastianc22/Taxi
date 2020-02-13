@@ -1,0 +1,17 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Taxi.Web.Data.Entities;
+
+namespace Taxi.Web.Data
+{
+    public class DataContext : DbContext
+    {
+        //constructor - add line for me
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
+        }
+
+        //Class for mapping DB tables
+        //"Taxis" Collection representing the taxis registered in the system.
+        public DbSet<TaxiEntity> Taxis { get; set; }
+    }
+}
