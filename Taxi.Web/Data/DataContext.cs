@@ -13,5 +13,9 @@ namespace Taxi.Web.Data
         //Class for mapping DB tables
         //"Taxis" Collection representing the taxis registered in the system.
         public DbSet<TaxiEntity> Taxis { get; set; }
+
+        public DbSet<TripEntity> Trips { get; set; }
+
+        public DbSet<TripDetailEntity> TripDetails { get; set; }
     }
 }
