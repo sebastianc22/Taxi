@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using Taxi.Web.Data.Entities;
 
 namespace Taxi.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TaxisController : Controller
     {
         private readonly DataContext _context;
@@ -63,9 +65,9 @@ namespace Taxi.Web.Controllers
                 }
                 catch (Exception ex)
                 {
-                    if(ex.InnerException.Message.Contains("duplicate"))
+                    if (ex.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty,"Already exits a taxi with the same plaque.");
+                        ModelState.AddModelError(string.Empty, "Already exits a taxi with the same plaque.");
                     }
                     else
                     {
